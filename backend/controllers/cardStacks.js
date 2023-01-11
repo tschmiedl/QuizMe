@@ -12,7 +12,7 @@ function isAuthenticated(req, res, next){
     }
 }
 
-// Get Users CardStacks
+// Get Users CardStacks 
 router.get('/', isAuthenticated, async (req,res) => {
     const token = req.headers.authorization
     const decoded = jwt.decode(token, config.jwtSecret)

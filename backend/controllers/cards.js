@@ -28,11 +28,17 @@ router.post('/:stackid/', isAuthenticated, async (req,res) => {
     res.json(createdCard)
  })
 
-//  Update one card 
+//  Update one card - Works in Postman
 router.put('/:cardid', isAuthenticated, async (req,res) => {
     const updatedCard = await db.Card.findByIdAndUpdate(req.params.cardid,
         req.body, {new:true})
     res.json(updatedCard)
+})
+
+// Delete one card - Works in Postman
+router.delete('/:cardid', isAuthenticated, async (req,res) => {
+    await db.Card.findByIdAndDelete(req.params.cardid)
+    res.sendStatus(200)
 })
 
 
