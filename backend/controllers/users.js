@@ -35,11 +35,9 @@ router.post('/login', async (req, res) => {
     if(req.body.password === foundUser.password){
         const payload = {id: foundUser._id}
         const token = jwt.encode(payload, config.jwtSecret)
-        const userProducts = await db.Product.find({ user: foundUser._id })
         res.json({
             user: foundUser,
-            token: token,
-            products: userProducts
+            token: token
         })
     } else {
         res.sendStatus(401)
@@ -52,10 +50,10 @@ router.get('/token', isAuthenticated, async (req, res) => {
     // Find user by the decoded token ID we established when logging in / signing up
     const foundUser = await db.User.findById(decoded.id)
     // Find the products linked to the user by the ID of that user
-    const userProducts = await db.Product.find({ user: foundUser._id })
+    const cardStacks = await db.CardStack.find({ user: foundUser._id })
     res.json({
         user: foundUser,
-        products: userProducts
+        stacks: cardStacks
     })
 })
 

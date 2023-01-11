@@ -8,15 +8,16 @@ const app = express()
 const cors = require("cors")
 require("dotenv").config()
 const bodyParser = require('body-parser')
-const PORT = process.env.PORT
+
 
 
 // access models
 const db = require("./models")
 
 // access controllers
+const cardCtrl = require("./controllers/cards.js")
 const cardStackCtrl = require("./controllers/cardStacks.js")
-const userController = require('./controllers/users.js')
+const userCtrl = require('./controllers/users.js')
 
 
 
@@ -31,8 +32,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 // Use controllers for all other routes
+app.use("/stack", cardCtrl)
 app.use("/stack", cardStackCtrl)
-app.use('/users', userController)
+app.use('/users', userCtrl)
 
 // +-+-+-+-+-+-+-+-+
 // |L|I|S|T|E|N|E|R|

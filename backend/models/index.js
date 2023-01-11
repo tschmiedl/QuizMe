@@ -23,3 +23,4 @@ mongoose.connection.on('error', (error) => {
 
 module.exports.User = require('./user')
 module.exports.CardStack = require('./cardStack')
+module.exports.Card = require('./card')
