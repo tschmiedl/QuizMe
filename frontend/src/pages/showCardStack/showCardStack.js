@@ -11,15 +11,23 @@ export default function ShowCardStack() {
     }, [])
     return(
     <>
+    <div className="row">
     {cardStacks.map((stacks, i) => {
         return(
-            <>
             
-            <div key={i}><Link to={"/" + stacks._id}>{stacks.title}</Link></div>
-            </>
+            
+            <div key={i} className="col s6 m6 l3">
+            <Link to={"/" + stacks._id} className="btn">
+            <div className="card mx-auto">
+                <h1 className="card-title">{stacks.title}</h1>   
+            </div>    
+            </Link>
+            </div>
+            
+            
         )
     })}
-    
+    </div>
     </>
         
     )

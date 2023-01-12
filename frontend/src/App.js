@@ -12,18 +12,17 @@ import Nav from './components/nav/nav';
 
 // Pages
 import Login from './pages/login/login'
-import ShowCardStack from './components/showCardStack/showCard';
+import ShowCardStack from './pages/showCardStack/showCardStack';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   return (
     <div className="App">
       <Nav isLoggedIn={isLoggedIn}/>
-      <ShowCardStack />
+      
       <Routes>
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}>
-
-        </Route>
+        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
+        <Route path="/cardStacks" element={<ShowCardStack />}/>
       </Routes>
       
     </div>
