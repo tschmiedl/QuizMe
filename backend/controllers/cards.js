@@ -12,33 +12,35 @@ function isAuthenticated(req, res, next){
     }
 }
 
-// Get Cards in certain stack - Works in Postman
-router.get('/:stackid/', isAuthenticated, async (req,res) => {
-    const foundStack = await db.CardStack.findById(req.params.stackid)
-    const cards = await db.Card.find({stack: foundStack._id})
-    res.json(cards)
-})
-
 // Create New Card - Works in Postman
-router.post('/:stackid/', isAuthenticated, async (req,res) => {
-    const createdCard =  await db.Card.create(req.body)
-    const stackId = req.params.stackid
-    createdCard.stack = stackId
-    createdCard.save()
+router.put('/:stackid/', isAuthenticated, async (req,res) => {
+    const createdCard =  await db.CardStack.findByIdAndUpdate(req.params.stackid,
+        { $push: { cards: req.body}}, {new:true}
+        )
     res.json(createdCard)
  })
 
-//  Update one card - Works in Postman
-router.put('/:cardid', isAuthenticated, async (req,res) => {
-    const updatedCard = await db.Card.findByIdAndUpdate(req.params.cardid,
-        req.body, {new:true})
-    res.json(updatedCard)
+// Update one card in a stack
+router.put('/:stackid/:cardid', isAuthenticated, async (req,res) => {
+    // console.log(req.body)
+    const stack = await db.CardStack.findById(req.params.stackid)
+    const cardToUpdate = stack.cards.id(req.params.cardid)
+    cardToUpdate.title = req.body.title
+    cardToUpdate.hint = req.body.hint
+    cardToUpdate.answer = req.body.answer
+    cardToUpdate.save()
+    res.json(stack)
 })
 
-// Delete one card - Works in Postman
-router.delete('/:cardid', isAuthenticated, async (req,res) => {
-    await db.Card.findByIdAndDelete(req.params.cardid)
-    res.sendStatus(200)
+router.delete('/:stackid/:cardid', isAuthenticated, async (req, res) => {
+    const stack = await db.CardStack.findById(req.params.stackid)
+    console.log(stack)
+    const cardToDelete = stack.cards.id(req.params.cardid)
+    const index = stack.cards.indexOf(cardToDelete)
+    console.log(index)
+    stack.cards.splice(index, 1)
+    stack.save()
+    res.json(stack)
 })
 
 

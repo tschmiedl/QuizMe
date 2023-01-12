@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { login } from "../../utils/api"
 
-export default function Login() {
+export default function Login(props) {
     const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
@@ -22,6 +22,7 @@ export default function Login() {
           login(formData)
               .then((data) => localStorage.token = data.token)
           // Sets our loggedin state (passed down in props to true)
+          props.setIsLoggedIn(true)
           navigate('/')
       }
 

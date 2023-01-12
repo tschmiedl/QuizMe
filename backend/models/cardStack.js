@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const cardSchema = require('./card')
 
 const cardStack = new mongoose.Schema({
     title: {type: String, required: true},
@@ -6,7 +7,8 @@ const cardStack = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    cards: [cardSchema]
 })
 
 

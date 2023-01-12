@@ -5,10 +5,8 @@ const card = new mongoose.Schema({
     hint: {type: String},
     answer: {type: String, required: true},
     studied: {type: Boolean, default: false},
-    stack: {type: mongoose.Schema.Types.ObjectId,
-        ref: 'CardStack'}
 })
 
-const Card = mongoose.model('Card', card)
 
-module.exports = Card
+
+module.exports = card
