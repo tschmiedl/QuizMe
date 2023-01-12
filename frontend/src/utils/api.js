@@ -29,4 +29,10 @@ export async function getUserCardStacks() {
     return data
 }
 
+// Get all cards in one Stack
+export async function getCardsinStack(stackid) {
+    const { data } = await axios.get('http://localhost:8000/stack/' + stackid, config)
+    return data
+}
+
 

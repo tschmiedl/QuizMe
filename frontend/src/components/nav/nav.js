@@ -15,7 +15,6 @@ export default function Nav(props) {
     : 
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <Link to='/' className="nav-item btn">Home</Link>
-        <Link to='/cardStacks' className="nav-item btn">Card Stacks</Link>
         <Link to='/account' className="nav-item btn">Account</Link>
     </nav>
     }   
