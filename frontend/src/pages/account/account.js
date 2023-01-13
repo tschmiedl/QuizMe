@@ -1,6 +1,16 @@
-export default function AccountPage() {
+import { useNavigate } from "react-router-dom"
+
+export default function AccountPage(props) {
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        localStorage.clear()
+        props.setIsLoggedIn(false)
+        navigate('/')
+        
+      }
 
     return(
-        <h1>This is the account Page</h1>
+        <button onClick={handleLogOut}>Log Out</button>
     )
 }

@@ -4,7 +4,7 @@ import CurrentCard from "../../components/currentCard/currentCard"
 import { getCardsinStack } from "../../utils/api"
 
 
-export default function ShowCard() {
+export default function ShowCard(props) {
     const [cardsInStack, setCardsInStack] = useState([])
     const [currentCard, setCurrentCard] = useState(0)
     const [cardsExist, setCardsExist] = useState(false)
@@ -16,7 +16,7 @@ export default function ShowCard() {
     
     useEffect(() => {
         getCardsinStack(stackid).then(data => { 
-            if (data.cards.length > 0) {
+            if (data.cards) {
                 setCardsInStack(data.cards)
                 setCardsExist(true)
             } else {

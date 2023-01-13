@@ -4,6 +4,7 @@ import { login } from "../../utils/api"
 
 export default function Login(props) {
     const navigate = useNavigate()
+    
 
     const [formData, setFormData] = useState({
         username: '',
@@ -20,10 +21,11 @@ export default function Login(props) {
           event.preventDefault()
           // Deconstructing data to set the local storage token equal to the token we created in our login route
           login(formData)
-              .then((data) => localStorage.token = data.token)
+              .then((data) => {localStorage.token = data.token})
           // Sets our loggedin state (passed down in props to true)
           props.setIsLoggedIn(true)
           navigate('/')
+          
       }
 
     return(
@@ -31,7 +33,7 @@ export default function Login(props) {
             <h2>Log In</h2>
 
             <form>
-                <div className="input-text">
+                <div className="form-group">
                     <label htmlFor='username'>Username</label>
                     <input
                         type='text'
@@ -49,7 +51,7 @@ export default function Login(props) {
                         value={formData.password} />
                 </div>
 
-                <button onClick={(e) => handleSubmit(formData)}>Log In</button>
+                <button onClick={(e) => handleSubmit(e,formData)}>Log In</button>
             </form>
         </div>
     )

@@ -15,9 +15,7 @@ function isAuthenticated(req, res, next){
 router.post('/signup', async (req, res) => {
     const foundUser = await db.User.findOne({ username: req.body.username})
     if(!foundUser){
-        // If User is not found, user is created
         const createdUser = await db.User.create(req.body)
-        // Creates token that is associated with specific user
         const payload = {id: createdUser._id}
         const token = jwt.encode(payload, config.jwtSecret)
         res.json({

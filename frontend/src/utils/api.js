@@ -11,13 +11,13 @@ const config = {
 
 // Sign up Route
 export async function signUp(formData) {
-    const {data} = await axios.post('http://localhost:8000/user/signup', formData)
+    const {data} = await axios.post('http://localhost:8000/users/signup', formData)
     return data
 }
 
 // Login Route
 export async function login(formData) {
-    const { data } = await axios.post('http://localhost:8000/user/login', formData)
+    const { data } = await axios.post('http://localhost:8000/users/login', formData)
     return data
 }
 

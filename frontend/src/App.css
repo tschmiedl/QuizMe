@@ -11,5 +11,11 @@ body {
 
 .showCard{
     display: flex;
-    
+
+}
+
+.card_link {
+    border: none;
+    text-decoration: none;
+    color: aqua;
 }

@@ -7,16 +7,18 @@ export default function Nav(props) {
     <>
     {props.isLoggedIn ? 
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-            <Link to='/signup'>Sign Up</Link>
-            <Link to='/login'>Login</Link>
-        </div>
+    <Link to='/' className="nav-item btn">Home</Link>
+    <Link to='/new' className="nav-item btn">New Stack</Link>
+    <Link to='/account' className="nav-item btn">Account</Link>
     </nav>
     : 
+    
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <Link to='/' className="nav-item btn">Home</Link>
-        <Link to='/account' className="nav-item btn">Account</Link>
-    </nav>
+    <div className="container-fluid">
+        <Link to='/signup'>Sign Up</Link>
+        <Link to='/login'>Login</Link>
+    </div>
+</nav>
     }   
 
     </>
