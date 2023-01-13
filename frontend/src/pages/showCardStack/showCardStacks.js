@@ -10,7 +10,7 @@ export default function ShowCardStacks() {
         
     }, [])
 
-    console.log(cardStacks)
+    
     return(
     <>
     <div className="row">
