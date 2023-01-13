@@ -7,7 +7,6 @@ export default function ShowCardStacks() {
 
     useEffect(() => {
         getUserCardStacks().then(data => setCardStacks(data))
-        
     }, [])
 
     

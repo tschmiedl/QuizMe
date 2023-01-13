@@ -15,6 +15,7 @@ import Login from './pages/login/login'
 import ShowCardStacks from './pages/showCardStack/showCardStacks';
 import ShowCard from './pages/ShowCard/showCard';
 import ErrorPage from './pages/errorPage/errorPage';
+import AccountPage from './pages/account/account';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path='/' element={<ShowCardStacks />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
+        <Route path='/account' element={<AccountPage />} />
         <Route path="/:stackid" element={<ShowCard />}/>
         <Route path='/:anything' element={<ErrorPage />} />
       </Routes>

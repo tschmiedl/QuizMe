@@ -11,7 +11,9 @@ export default function CurrentCard(props) {
     console.log(card)
     return(
         
-                <h4>{card.title}</h4>
+                <div className="card mx-auto">
+                    <div className="card-title">{card.title}</div>
+                </div>
         
     )
 }
