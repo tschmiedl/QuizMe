@@ -18,7 +18,7 @@ export default function Nav(props) {
         <Link to='/signup'>Sign Up</Link>
         <Link to='/login'>Login</Link>
     </div>
-</nav>
+    </nav>
     }   
 
     </>

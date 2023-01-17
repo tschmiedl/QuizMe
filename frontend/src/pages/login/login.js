@@ -17,16 +17,19 @@ export default function Login(props) {
     }
 
     function handleSubmit(event) {
-        // Prevent page from reloading
-          event.preventDefault()
-          // Deconstructing data to set the local storage token equal to the token we created in our login route
-          login(formData)
-              .then((data) => {localStorage.token = data.token})
-          // Sets our loggedin state (passed down in props to true)
-          props.setIsLoggedIn(true)
-          navigate('/')
-          
-      }
+        event.preventDefault();
+        login(formData)
+            .then((data) => {
+                localStorage.token = data.token;
+                props.setIsLoggedIn(true);
+                navigate('/');
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Incorrect login credentials. Please try again.");
+            });
+    }
+    
 
     return(
         <div className="container">

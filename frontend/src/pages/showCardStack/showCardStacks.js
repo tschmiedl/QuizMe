@@ -11,8 +11,9 @@ export default function ShowCardStacks(props) {
    
 
     useEffect(() => {
-        getUserCardStacks().then(data => setCardStacks(data))
-    }, [props.isLoggedIn])
+        if (localStorage.token){
+        getUserCardStacks().then(data => setCardStacks(data))}
+    }, [])
 
     
     return(
@@ -24,7 +25,7 @@ export default function ShowCardStacks(props) {
         return(
                       
             <div key={i} className="col s6 m6 l3">
-            <Link to={"/" + stacks._id} className="btn">
+            <Link to={"/study/" + stacks._id} className="btn">
             <div className="card mx-auto">
                 <h1 className="card-title">{stacks.title}</h1>   
             </div>    

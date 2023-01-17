@@ -2,8 +2,8 @@ import axios from 'axios'
 
 const config = {
     headers: {
-        // 'Authorization': localStorage.getItem('token')
-        'Authorization': "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjYzYmYwNmY1ZDYyNjk0YjlmODE4ZTdiMyJ9.yT3U0Sm1_ZwaRfTG1-w3lcweK98Iz_pfyMrRLBTWfxo"
+        'Authorization': localStorage.getItem('token')
+        
     }
 }
 
@@ -35,4 +35,9 @@ export async function getCardsinStack(stackid) {
     return data
 }
 
+// Create CardStack
+export async function createCardStack(formData) {
+    const { data } = await axios.post('http://localhost:8000/stack/', formData, config)
+    return data
+}
 

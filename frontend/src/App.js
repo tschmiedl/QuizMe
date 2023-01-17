@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import {Routes, Route, Navigate} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 // API Functions
-import { getUserCardStacks } from './utils/api';
+
 
 // CSS
 import './App.css';
@@ -17,12 +17,18 @@ import ShowCardStacks from './pages/showCardStack/showCardStacks';
 import ShowCard from './pages/ShowCard/showCard';
 import ErrorPage from './pages/errorPage/errorPage';
 import AccountPage from './pages/account/account';
+import AddCardStack from './pages/addCardStack/addCardStack';
+
 
 function App() {
-  const navigate = useNavigate()
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   
-  
+  useEffect(() => {
+    if (localStorage.token) {
+      setIsLoggedIn(true)
+    }
+  }, [])
   
 
   return (
@@ -34,8 +40,10 @@ function App() {
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path='/signup' element={<SignUp setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/account' element={<AccountPage setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/:stackid" element={<ShowCard />}/>
+        <Route path="/study/:stackid" element={<ShowCard />}/>
+        <Route path='/new' element={<AddCardStack />} />
         <Route path='/:anything' element={<ErrorPage />} />
+        {/* <Route path='/:anything/:more' element={<ErrorPage />} /> */}
       </Routes>
       
     </div>

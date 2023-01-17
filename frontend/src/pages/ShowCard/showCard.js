@@ -16,14 +16,15 @@ export default function ShowCard(props) {
     
     useEffect(() => {
         getCardsinStack(stackid).then(data => { 
-            if (data.cards) {
+            if (!data.cards.data) {
+                setCardsInStack(data.cards)
+                
+            } else {
                 setCardsInStack(data.cards)
                 setCardsExist(true)
-            } else {
-                setCardsExist(false)
             }
         })
-    }, [stackid])
+    }, [])
 
     
     const nextCard = () => {

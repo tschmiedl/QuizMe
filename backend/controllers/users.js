@@ -30,16 +30,20 @@ router.post('/signup', async (req, res) => {
   
 router.post('/login', async (req, res) => {
     const foundUser = await db.User.findOne({ username: req.body.username})
-    if(req.body.password === foundUser.password){
-        const payload = {id: foundUser._id}
-        const token = jwt.encode(payload, config.jwtSecret)
-        res.json({
-            user: foundUser,
-            token: token
-        })
-    } else {
+    if (!foundUser) {
         res.sendStatus(401)
     }
+    else {
+        if(req.body.password === foundUser.password){
+            const payload = {id: foundUser._id}
+            const token = jwt.encode(payload, config.jwtSecret)
+            res.json({
+                user: foundUser,
+                token: token
+            })
+        } else {
+            res.sendStatus(401)
+        }}
 })
 
 router.get('/token', isAuthenticated, async (req, res) => {
