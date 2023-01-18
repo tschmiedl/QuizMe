@@ -2,7 +2,7 @@ import { useState } from "react"
 import { createCardStack } from "../../utils/api"
 import { useNavigate } from "react-router-dom"
 
-export default function AddCardStack() {
+export default function AddCardStack(props) {
     const navigate = useNavigate()
     
     const [formData, setFormData] = useState({
@@ -18,9 +18,8 @@ export default function AddCardStack() {
     function handleSubmit(event) {
         event.preventDefault()
         createCardStack(formData)
+        props.setAddedCardStack(true)
         navigate('/')
-        
-        
     }
 
     return(

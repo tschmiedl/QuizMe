@@ -1,24 +1,21 @@
-import { useEffect, useState } from "react"
-import { getUserCardStacks } from "../../utils/api"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-
-
+import { getUserCardStacks } from "../../utils/api"
 
 export default function ShowCardStacks(props) {
-    
     const [cardStacks, setCardStacks] = useState([])
 
    
 
     useEffect(() => {
-        if (localStorage.token){
+        if (props.isLoggedIn){
         getUserCardStacks().then(data => setCardStacks(data))}
     }, [])
 
-    
-    return(
+return(
     <>
-    {props.isLoggedIn? 
+    <div>
+{props.isLoggedIn? 
     <div className="row">
     <h2>Your Card Stacks:</h2> 
     {cardStacks.map((stacks, i) => {
@@ -31,8 +28,6 @@ export default function ShowCardStacks(props) {
             </div>    
             </Link>
             </div>
-            
-           
         )
     })}
     </div>
@@ -40,7 +35,6 @@ export default function ShowCardStacks(props) {
     <div>
         <h1>Sign Up or Login to continue!</h1>
     </div>}
+    </div>
     </>
-        
-    )
-}
+)}

@@ -13,7 +13,7 @@ import Nav from './components/nav/nav';
 // Pages
 import Login from './pages/login/login'
 import SignUp from './pages/signUp/signUp';
-import ShowCardStacks from './pages/showCardStack/showCardStacks';
+import ShowCardStacks from './pages/showCardStacks/showCardStacks';
 import ShowCard from './pages/ShowCard/showCard';
 import ErrorPage from './pages/errorPage/errorPage';
 import AccountPage from './pages/account/account';
@@ -29,7 +29,6 @@ function App() {
       setIsLoggedIn(true)
     }
   }, [])
-  
 
   return (
     <div className="App">
@@ -45,7 +44,7 @@ function App() {
         <Route path='/:anything' element={<ErrorPage />} />
         {/* <Route path='/:anything/:more' element={<ErrorPage />} /> */}
       </Routes>
-      
+     
     </div>
   );
 }

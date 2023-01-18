@@ -32,8 +32,7 @@ router.post('/login', async (req, res) => {
     const foundUser = await db.User.findOne({ username: req.body.username})
     if (!foundUser) {
         res.sendStatus(401)
-    }
-    else {
+    } else {
         if(req.body.password === foundUser.password){
             const payload = {id: foundUser._id}
             const token = jwt.encode(payload, config.jwtSecret)
