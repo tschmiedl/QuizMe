@@ -41,3 +41,8 @@ export async function createCardStack(formData) {
     return data
 }
 
+export async function addOneCard(stackId, formData) {
+    const { data } = await axios.put('http://localhost:8000/stack/' + stackId, formData, config)
+    return data
+}
+

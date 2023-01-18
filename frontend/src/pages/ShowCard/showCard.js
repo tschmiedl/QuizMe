@@ -15,17 +15,16 @@ export default function ShowCard(props) {
     
     
     useEffect(() => {
-        getCardsinStack(stackid).then(data => { 
-            if (!data.cards.data) {
+        getCardsinStack(stackid).then((data) => { 
+            if (data.cards.length > 0) {
                 setCardsInStack(data.cards)
-                
+                setCardsExist(true)  
             } else {
-                setCardsInStack(data.cards)
-                setCardsExist(true)
+                
+                setCardsExist(false)
             }
         })
     }, [])
-
     
     const nextCard = () => {
         if (currentCard < cardsInStack.length - 1) {
@@ -57,7 +56,7 @@ export default function ShowCard(props) {
     <>
     {cardsExist ? 
     <div>
-         <Link to={"/" + stackid + '/new'}>Add a Card</Link>
+         <Link to={"/" + stackid}>Add a Card</Link>
     <div className="showCard">
     <button onClick={prevCard}>Prev card</button>
     <CurrentCard 
@@ -72,7 +71,7 @@ export default function ShowCard(props) {
     </div>
     : 
     <div>
-        <Link to={"/" + stackid + '/new'}>Add a card to get started!</Link>
+        <Link to={"/" + stackid}>Add a card to get started!</Link>
     </div>
     }
     </>

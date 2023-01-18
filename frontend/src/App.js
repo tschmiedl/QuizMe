@@ -18,12 +18,14 @@ import ShowCard from './pages/ShowCard/showCard';
 import ErrorPage from './pages/errorPage/errorPage';
 import AccountPage from './pages/account/account';
 import AddCardStack from './pages/addCardStack/addCardStack';
+import AddOneCard from './pages/addOneCard/addOneCard';
 
 
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  
+  const [addedCardStack, setAddedCardStack] = useState(false)
+
   useEffect(() => {
     if (localStorage.token) {
       setIsLoggedIn(true)
@@ -35,13 +37,15 @@ function App() {
       <Nav isLoggedIn={isLoggedIn}/>
       
       <Routes>
-        <Route path='/' element={<ShowCardStacks setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} />
+        <Route path='/' element={<ShowCardStacks setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} addedCardStack={addedCardStack} setAddedCardStack={setAddedCardStack}/>} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path='/signup' element={<SignUp setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/account' element={<AccountPage setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/study/:stackid" element={<ShowCard />}/>
-        <Route path='/new' element={<AddCardStack />} />
+        <Route path='/new' element={<AddCardStack setAddedCardStack={setAddedCardStack}/>} />
+        <Route path='/:stackid' element={<AddOneCard />} />
         <Route path='/:anything' element={<ErrorPage />} />
+        
         {/* <Route path='/:anything/:more' element={<ErrorPage />} /> */}
       </Routes>
      

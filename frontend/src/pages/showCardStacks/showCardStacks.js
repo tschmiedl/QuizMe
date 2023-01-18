@@ -5,17 +5,17 @@ import { getUserCardStacks } from "../../utils/api"
 export default function ShowCardStacks(props) {
     const [cardStacks, setCardStacks] = useState([])
 
-   
-
     useEffect(() => {
         if (props.isLoggedIn){
         getUserCardStacks().then(data => setCardStacks(data))}
     }, [])
 
+   
+    
 return(
     <>
     <div>
-{props.isLoggedIn? 
+    {props.isLoggedIn? 
     <div className="row">
     <h2>Your Card Stacks:</h2> 
     {cardStacks.map((stacks, i) => {
