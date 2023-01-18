@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import CurrentCard from "../../components/currentCard/currentCard"
 import { getCardsinStack } from "../../utils/api"
 import { deleteOneCard } from "../../utils/api"
+import { updateOneCard } from "../../utils/api"
 
 export default function ShowCard(props) {
     const [cardsInStack, setCardsInStack] = useState([])
@@ -52,21 +53,24 @@ export default function ShowCard(props) {
         }
     }
     
-    const deleteCard = (stackId,cardId) => {
-        deleteOneCard(stackId, cardId)
-        getCardsinStack(stackId).then((data) => {
-        if (data.cards.length > 1) {
+    const deleteCard = async (stackId,cardId) => {
+        const data = await deleteOneCard(stackId, cardId)
+        // const data = await getCardsinStack(stackId)
+        if (data.cards.length >= 1) {
+                console.log(data.cards)
                 setCardsInStack(data.cards)
-                nextCard()
+                setCurrentCard(0)
                 setCardsExist(true)  
+                nextCard()
         } 
         else {
                 setCurrentCard(0)
                 setCardsExist(false)
             }
-        })
-        }
         
+        }
+    
+    
     
    
    return(
@@ -74,17 +78,20 @@ export default function ShowCard(props) {
     {cardsExist ? 
     <div>
          <Link to={"/" + stackid}>Add a Card</Link>
+         
     <div className="showCard">
     <button onClick={prevCard}>Prev card</button>
     <CurrentCard 
         currentCard={currentCard} 
-        cardsInStack={cardsInStack} 
+        cardsInStack={cardsInStack}
+        setCardsInStack={setCardsInStack} 
         hintShow={hintShow} 
         answerShow={answerShow} 
         setAnswerShow={setAnswerShow} 
         setHintShow={setHintShow}
         stackid={stackid}
-        deleteCard={deleteCard}/>
+        deleteCard={deleteCard}
+        />
     <button onClick={nextCard}>next card</button>
     </div>
     </div>

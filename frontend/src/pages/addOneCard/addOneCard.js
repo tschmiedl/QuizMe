@@ -29,18 +29,21 @@ export default function AddOneCard() {
                 <label htmlFor="title">Question / Word</label>
                 <input
                     type='text'
+                    className="form-control"
                     name='title'
                     onChange={handleChange}
                     value={formData.title} />
                 <label htmlFor="hint">Hint</label>
                 <input
                     type='text'
+                    className="form-control"
                     name='hint'
                     onChange={handleChange}
                     value={formData.hint} />
                 <label htmlFor="answer">Answer</label>
                 <input
                     type='answer'
+                    className="form-control"
                     name='answer'
                     onChange={handleChange}
                     value={formData.answer} />
