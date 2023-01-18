@@ -46,6 +46,7 @@ export default function CurrentCard(props) {
                     :
                     <button className="card-link" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}
                     <button className="card-link" onClick={() => {setFromShow(true)}}>Edit</button>
+                    <button className="card-link" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</button>
             </div>}
         </>
         

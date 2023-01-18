@@ -41,8 +41,14 @@ export async function createCardStack(formData) {
     return data
 }
 
+// Add a card
 export async function addOneCard(stackId, formData) {
     const { data } = await axios.put('http://localhost:8000/stack/' + stackId, formData, config)
     return data
 }
 
+// Update a card
+export async function deleteOneCard(stackId, cardId) {
+    const { data } = await axios.delete('http://localhost:8000/stack/' + stackId + '/' + cardId, config)
+    return data
+}

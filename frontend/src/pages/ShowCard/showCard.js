@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import CurrentCard from "../../components/currentCard/currentCard"
 import { getCardsinStack } from "../../utils/api"
-
+import { deleteOneCard } from "../../utils/api"
 
 export default function ShowCard(props) {
     const [cardsInStack, setCardsInStack] = useState([])
@@ -25,6 +25,8 @@ export default function ShowCard(props) {
             }
         })
     }, [])
+
+    
     
     const nextCard = () => {
         if (currentCard < cardsInStack.length - 1) {
@@ -39,7 +41,6 @@ export default function ShowCard(props) {
         }
     }
 
-    
     const prevCard = () => {
         if (currentCard > 0) {
             setCurrentCard(currentCard -1)
@@ -50,6 +51,22 @@ export default function ShowCard(props) {
             setHintShow(false)
         }
     }
+    
+    const deleteCard = (stackId,cardId) => {
+        deleteOneCard(stackId, cardId)
+        getCardsinStack(stackId).then((data) => {
+        if (data.cards.length > 1) {
+                setCardsInStack(data.cards)
+                nextCard()
+                setCardsExist(true)  
+        } 
+        else {
+                setCurrentCard(0)
+                setCardsExist(false)
+            }
+        })
+        }
+        
     
    
    return(
@@ -65,7 +82,9 @@ export default function ShowCard(props) {
         hintShow={hintShow} 
         answerShow={answerShow} 
         setAnswerShow={setAnswerShow} 
-        setHintShow={setHintShow}/>
+        setHintShow={setHintShow}
+        stackid={stackid}
+        deleteCard={deleteCard}/>
     <button onClick={nextCard}>next card</button>
     </div>
     </div>

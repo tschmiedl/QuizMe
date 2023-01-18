@@ -24,7 +24,7 @@ import AddOneCard from './pages/addOneCard/addOneCard';
 function App() {
   
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [addedCardStack, setAddedCardStack] = useState(false)
+  
 
   useEffect(() => {
     if (localStorage.token) {
@@ -37,12 +37,12 @@ function App() {
       <Nav isLoggedIn={isLoggedIn}/>
       
       <Routes>
-        <Route path='/' element={<ShowCardStacks setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} addedCardStack={addedCardStack} setAddedCardStack={setAddedCardStack}/>} />
+        <Route path='/' element={<ShowCardStacks setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path='/signup' element={<SignUp setIsLoggedIn={setIsLoggedIn} />} />
         <Route path='/account' element={<AccountPage setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/study/:stackid" element={<ShowCard />}/>
-        <Route path='/new' element={<AddCardStack setAddedCardStack={setAddedCardStack}/>} />
+        <Route path='/new' element={<AddCardStack />} />
         <Route path='/:stackid' element={<AddOneCard />} />
         <Route path='/:anything' element={<ErrorPage />} />
         

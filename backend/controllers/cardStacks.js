@@ -38,7 +38,6 @@ router.post('/', isAuthenticated, async (req,res) => {
 
 // Delete Card Stack and Associated Cards - Works in Postman
 router.delete('/:stackid', isAuthenticated, async (req,res) => {
-    await db.Card.deleteMany({stack: req.params.stackid})
     await db.CardStack.findByIdAndDelete(req.params.stackid)
     res.sendStatus(200)
 })

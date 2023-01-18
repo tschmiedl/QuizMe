@@ -10,7 +10,7 @@ export default function AddOneCard() {
 
     const { stackid } = useParams()
 
-    console.log(stackid)
+    
     function handleChange(event) {
         setFormData({...formData, [event.target.name]: event.target.value })
     }
