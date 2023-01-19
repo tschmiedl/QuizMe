@@ -3,7 +3,8 @@ import { Link, useParams } from "react-router-dom"
 import CurrentCard from "../../components/currentCard/currentCard"
 import { getCardsinStack } from "../../utils/api"
 import { deleteOneCard } from "../../utils/api"
-import { updateOneCard } from "../../utils/api"
+
+import { motion } from "framer-motion"
 
 export default function ShowCard(props) {
     const [cardsInStack, setCardsInStack] = useState([])
@@ -55,7 +56,7 @@ export default function ShowCard(props) {
     
     const deleteCard = async (stackId,cardId) => {
         const data = await deleteOneCard(stackId, cardId)
-        // const data = await getCardsinStack(stackId)
+        
         if (data.cards.length >= 1) {
                 console.log(data.cards)
                 setCardsInStack(data.cards)
@@ -79,8 +80,24 @@ export default function ShowCard(props) {
     <div>
          <Link to={"/" + stackid}>Add a Card</Link>
          
-    <div className="showCard">
-    <button onClick={prevCard}>Prev card</button>
+    <motion.div 
+    className="showCard"
+    initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+        duration: 0.5,
+        delay: 0.1,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}
+    >
+    <motion.button 
+    className="moveButton"
+    whileHover={{ scale: 1.1 }}
+    onHoverStart={e => {}}
+    onHoverEnd={e => {}}
+    whileTap={{ scale: 0.9}}
+    onClick={prevCard}>Prev</motion.button>
+
     <CurrentCard 
         currentCard={currentCard} 
         cardsInStack={cardsInStack}
@@ -91,9 +108,17 @@ export default function ShowCard(props) {
         setHintShow={setHintShow}
         stackid={stackid}
         deleteCard={deleteCard}
+        nextCard={nextCard}
+        prevCard={prevCard}
         />
-    <button onClick={nextCard}>next card</button>
-    </div>
+    <motion.button 
+    className="moveButton"
+    whileHover={{ scale: 1.1 }}
+    onHoverStart={e => {}}
+    onHoverEnd={e => {}}
+    whileTap={{ scale: 0.9}}
+    onClick={nextCard}>Next</motion.button>
+    </motion.div>
     </div>
     : 
     <div>

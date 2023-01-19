@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { updateOneCard } from "../../utils/api"
+import { motion } from "framer-motion"
 
 export default function CurrentCard(props) {
     const [card, setCard] = useState({})
-    
+    const [swipe, setSwipe] = useState()
+
     const [formShow, setFromShow] = useState(false)
     const [formData, setFormData] = useState({
         title: '',
@@ -14,6 +16,7 @@ export default function CurrentCard(props) {
     useEffect(() => {
         setCard(props.cardsInStack[props.currentCard])
         setFormData(props.cardsInStack[props.currentCard])
+        setFromShow(false)
     },[props])
 
     const handleChange = (event) => {
@@ -27,11 +30,37 @@ export default function CurrentCard(props) {
         setFromShow(false)
     }
     
+    const cancelEdit = () => {
+        setFromShow(false)
+    }
     
     
     return(
-        <>
+        
+        <motion.div
+            initial={{opacity: 0, x: -100}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x:0}}
+            drag="x"
+            dragConstraints={{left: 0, right:0}}
+            dragSnapToOrigin={true}
+            onDragEnd={(event, info) => {
+                
+                setSwipe(info.point.x)
+                
+                if (swipe < info.point.x) {
+                    props.nextCard()
+                    setSwipe(info.point.x)
+                }
+                else {
+                    props.prevCard()
+                    setSwipe(info.point.x)
+                }    
+            }}
+            
+            >
         {formShow ? 
+        <div className="card">
             <form>
                 <div className="form-group">
                 <label htmlFor="title">Title</label>
@@ -61,23 +90,30 @@ export default function CurrentCard(props) {
                         value={formData.answer} />
                 </div>
                 <button type="button" onClick={() => {editCard(props.stackid, card._id, formData)}}>Edit</button>
+                <button type="button" onClick={() => {cancelEdit()}}>Cancel</button>
             </form> 
+            </div>
         : 
-            <div className="card mx-auto">
-                    <div className="card-title">{card.title}</div>
+            <motion.div 
+            className="card">
+                    <div 
+                    className="card-title">{card.title}</div>
                     {props.hintShow ? 
                     <div className="card-text">{card.hint}</div>
                     :
                     
-                    <button className="card-link" onClick={() => {props.setHintShow(true)}}>Hint</button>}
+                        <button className="stateShow" onClick={() => {props.setHintShow(true)}}>Hint</button>}
                     {props.answerShow ? 
                     <div className="card-text">{card.answer}</div>
                     :
-                    <button className="card-link" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}
-                    <button className="card-link" onClick={() => {setFromShow(true)}}>Edit</button>
-                    <button className="card-link" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</button>
-            </div>}
-        </>
+                    
+                    <button className="stateShow" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}
+                    <div>
+                        <button className="card-link" onClick={() => {setFromShow(true)}}>Edit</button>
+                        <button className="card-link" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</button>
+                    </div>
+            </motion.div>}
+        </motion.div>
         
     )
 }
