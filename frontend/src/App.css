@@ -1,9 +1,13 @@
+
+
 body {
+    font-family: 'Josefin Sans', sans-serif;
     background-color: blanchedalmond;
 }
 
 .card{
     margin-top: 20px;
+    padding-top: 10px;
     margin-bottom: 20px;
     text-align: center;
     width:50vw;
@@ -41,6 +45,9 @@ body {
     margin-right: 5px;
     background-color: rgb(79, 233, 225);
     text-align: center;
-    
+}
 
+.addCardLink {
+    display: flex;
+    justify-content: center;
 }

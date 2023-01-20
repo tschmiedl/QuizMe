@@ -45,16 +45,12 @@ export default function CurrentCard(props) {
             dragConstraints={{left: 0, right:0}}
             dragSnapToOrigin={true}
             onDragEnd={(event, info) => {
-                
                 setSwipe(info.point.x)
-                
                 if (swipe < info.point.x) {
                     props.nextCard()
-                    setSwipe(info.point.x)
                 }
                 else {
                     props.prevCard()
-                    setSwipe(info.point.x)
                 }    
             }}
             

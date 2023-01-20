@@ -24,8 +24,8 @@ export async function login(formData) {
 // CARDSTACKS
 
 // Get User's Card Stacks
-export async function getUserCardStacks() {
-    const { data } = await axios.get('http://localhost:8000/stack/', config)
+export async function getUserCardStacks(userId) {
+    const { data } = await axios.get('http://localhost:8000/stack/' + userId, config)
     return data
 }
 

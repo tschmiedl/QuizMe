@@ -5,10 +5,15 @@ import { motion } from "framer-motion"
 
 export default function ShowCardStacks(props) {
     const [cardStacks, setCardStacks] = useState([])
-
+    const userId = localStorage.getItem('id')
+    
+    console.log(userId)
     useEffect(() => {
         if (props.isLoggedIn){
-        getUserCardStacks().then(data => setCardStacks(data))}
+        getUserCardStacks(userId).then(data => {
+            console.log(data)
+            setCardStacks(data)
+        })}
     }, [])
 
    

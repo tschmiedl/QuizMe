@@ -13,11 +13,9 @@ function isAuthenticated(req, res, next){
 }
 
 // Get Users CardStacks
-router.get('/', isAuthenticated, async (req,res) => {
-    const token = req.headers.authorization
-    const decoded = jwt.decode(token, config.jwtSecret)
-    const foundStack = await db.CardStack.find({user: decoded.id})
-    res.json(foundStack)
+router.get('/:userId', isAuthenticated, async (req,res) => {
+    const foundStacks = await db.CardStack.find({user: req.params.userId})
+    res.json(foundStacks)
 })
 
 // Get Cards in certain stack - Works in Postman

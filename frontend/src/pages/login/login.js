@@ -21,6 +21,7 @@ export default function Login(props) {
         login(formData)
             .then((data) => {
                 localStorage.token = data.token;
+                localStorage.id = data.user._id;
                 props.setIsLoggedIn(true);
                 navigate('/');
             })

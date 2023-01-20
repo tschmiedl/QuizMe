@@ -21,7 +21,10 @@ export default function SignUp(props) {
           event.preventDefault()
           // Deconstructing data to set the local storage token equal to the token we created in our login route
           signUp(formData)
-              .then((data) => {localStorage.token = data.token})
+              .then((data) => {
+                localStorage.token = data.token;
+                localStorage.id = data.user._id;
+            })
           // Sets our loggedin state (passed down in props to true)
           props.setIsLoggedIn(true)
           navigate('/')

@@ -22,7 +22,6 @@ router.put('/:stackid/', isAuthenticated, async (req,res) => {
 
 // Update one card in a stack - works in Postman 
 router.put('/:stackid/:cardid', async (req,res) => {
-    console.log(req.body)
     const stack = await db.CardStack.findById(req.params.stackid)
     const cardToUpdate = stack.cards.id(req.params.cardid)
     cardToUpdate.title = req.body.title
