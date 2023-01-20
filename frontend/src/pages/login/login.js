@@ -21,12 +21,10 @@ export default function Login(props) {
         login(formData)
             .then((data) => {
                 localStorage.token = data.token;
-                localStorage.id = data.user._id;
                 props.setIsLoggedIn(true);
                 navigate('/');
             })
             .catch((error) => {
-                console.log(error);
                 alert("Incorrect login credentials. Please try again.");
             });
     }
@@ -46,7 +44,7 @@ export default function Login(props) {
                         value={formData.username} />
                 </div>
 
-                <div className="input-text">
+                <div className="form-group">
                     <label htmlFor='password'>Password</label>
                     <input
                         type='password'
@@ -55,7 +53,7 @@ export default function Login(props) {
                         value={formData.password} />
                 </div>
 
-                <button onClick={(e) => handleSubmit(e,formData)}>Log In</button>
+                <button className="LorS" onClick={(e) => handleSubmit(e,formData)}>Log In</button>
             </form>
         </div>
     )

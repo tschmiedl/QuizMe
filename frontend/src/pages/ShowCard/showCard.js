@@ -15,9 +15,10 @@ export default function ShowCard(props) {
 
     const { stackid } = useParams()
     
-    
+
     useEffect(() => {
         getCardsinStack(stackid).then((data) => { 
+            
             if (data.cards.length > 0) {
                 setCardsInStack(data.cards)
                 setCardsExist(true)  

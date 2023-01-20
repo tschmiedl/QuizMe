@@ -37,24 +37,7 @@ export default function CurrentCard(props) {
     
     return(
         
-        <motion.div
-            initial={{opacity: 0, x: -100}}
-            animate={{opacity: 1, x: 0}}
-            exit={{opacity: 0, x:0}}
-            drag="x"
-            dragConstraints={{left: 0, right:0}}
-            dragSnapToOrigin={true}
-            onDragEnd={(event, info) => {
-                setSwipe(info.point.x)
-                if (swipe < info.point.x) {
-                    props.nextCard()
-                }
-                else {
-                    props.prevCard()
-                }    
-            }}
-            
-            >
+        <motion.div>
         {formShow ? 
         <div className="card">
             <form>
@@ -85,13 +68,29 @@ export default function CurrentCard(props) {
                         onChange={handleChange}
                         value={formData.answer} />
                 </div>
-                <button type="button" onClick={() => {editCard(props.stackid, card._id, formData)}}>Edit</button>
+                <button type="button" onClick={() => {editCard(props.stackid, card._id, formData)}}>Submit</button>
                 <button type="button" onClick={() => {cancelEdit()}}>Cancel</button>
             </form> 
             </div>
         : 
             <motion.div 
-            className="card">
+            className="card"
+            initial={{opacity: 0, x: -100}}
+            animate={{opacity: 1, x: 0}}
+            exit={{opacity: 0, x:0}}
+            drag="x"
+            dragConstraints={{left: 0, right:0}}
+            dragSnapToOrigin={true}
+            onDragEnd={(event, info) => {
+                setSwipe(info.point.x)
+                if (swipe < info.point.x) {
+                    props.nextCard()
+                }
+                else {
+                    props.prevCard()
+                }    
+            }}
+            >
                     <div 
                     className="card-title">{card.title}</div>
                     {props.hintShow ? 

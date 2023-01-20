@@ -23,20 +23,21 @@ export default function SignUp(props) {
           signUp(formData)
               .then((data) => {
                 localStorage.token = data.token;
-                localStorage.id = data.user._id;
+                props.setIsLoggedIn(true);
+                navigate('/');
             })
-          // Sets our loggedin state (passed down in props to true)
-          props.setIsLoggedIn(true)
-          navigate('/')
-          
+            .catch((error) => {
+                alert("That username already exists");
+            });
       }
 
     return(
         <div className="container">
             <h2>Sign Up</h2>
-
+            
             <form>
                 <div className="form-group">
+
                     <label htmlFor='username'>Username</label>
                     <input
                         type='text'
@@ -45,7 +46,7 @@ export default function SignUp(props) {
                         value={formData.username} />
                 </div>
 
-                <div className="input-text">
+                <div className="form-group">
                     <label htmlFor='password'>Password</label>
                     <input
                         type='password'
@@ -54,7 +55,7 @@ export default function SignUp(props) {
                         value={formData.password} />
                 </div>
 
-                <button onClick={(e) => handleSubmit(e,formData)}>Sign Up!</button>
+                <button className="LorS" onClick={(e) => handleSubmit(e,formData)}>Sign Up!</button>
             </form>
         </div>
     )

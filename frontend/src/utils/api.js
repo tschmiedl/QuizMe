@@ -1,11 +1,6 @@
 import axios from 'axios'
 
-const config = {
-    headers: {
-        'Authorization': localStorage.getItem('token')
-        
-    }
-}
+
 
 // USERS
 
@@ -24,37 +19,75 @@ export async function login(formData) {
 // CARDSTACKS
 
 // Get User's Card Stacks
-export async function getUserCardStacks(userId) {
-    const { data } = await axios.get('http://localhost:8000/stack/' + userId, config)
+export async function getUserCardStacks() {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
+    
+    const { data } = await axios.get('http://localhost:8000/stack/', config)
     return data
 }
 
 // Get all cards in one Stack
 export async function getCardsinStack(stackid) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
+    console.log(config)
     const { data } = await axios.get('http://localhost:8000/stack/' + stackid, config)
     return data
 }
 
 // Create CardStack
 export async function createCardStack(formData) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
     const { data } = await axios.post('http://localhost:8000/stack/', formData, config)
     return data
 }
 
 // Add a card
 export async function addOneCard(stackId, formData) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
     const { data } = await axios.put('http://localhost:8000/stack/' + stackId, formData, config)
     return data
 }
 
 // Delete a card
 export async function deleteOneCard(stackId, cardId) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
     const { data } = await axios.delete('http://localhost:8000/stack/' + stackId + '/' + cardId, config)
     return data
 }
 
 // Edit a card
 export async function updateOneCard(stackId, cardId, formData) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
     const { data } = await axios.put('http://localhost:8000/stack/' + stackId + '/' + cardId, formData, config)
     return data
 }

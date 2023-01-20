@@ -2,7 +2,7 @@ import { useState } from "react"
 import { createCardStack } from "../../utils/api"
 
 
-export default function AddCardStack() {
+export default function AddCardStack(props) {
     
     
     const [formData, setFormData] = useState({
@@ -25,12 +25,14 @@ export default function AddCardStack() {
             <div className="form-group">
                 <label htmlFor='title'>Stack Name</label>
                 <input
+                    className="form-control"
                     type='text'
                     name='title'
                     onChange={handleChange}
                     value={formData.title} />
                 <label htmlFor='title'>Category</label>
                 <input
+                    className="form-control"
                     type='text'
                     name='category'
                     onChange={handleChange}

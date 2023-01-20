@@ -1,29 +1,26 @@
-import { useState, useEffect } from "react"
+
 import { Link } from "react-router-dom"
-import { getUserCardStacks } from "../../utils/api"
+
 import { motion } from "framer-motion"
 
-export default function ShowCardStacks(props) {
-    const [cardStacks, setCardStacks] = useState([])
-    const userId = localStorage.getItem('id')
-    
-    console.log(userId)
-    useEffect(() => {
-        if (props.isLoggedIn){
-        getUserCardStacks(userId).then(data => {
-            console.log(data)
-            setCardStacks(data)
-        })}
-    }, [])
 
-   
+export default function ShowCardStacks({cardStacks, isLoggedIn}) {
+    
+    
+    
+    
+
+    
+    
+
     
 return(
     <>
     <div>
-    {props.isLoggedIn? 
+    {isLoggedIn && cardStacks.length > 0 && 
     <div className="row">
-    <h2>Your Card Stacks:</h2> 
+        <h2>Welcome</h2>
+    <h2 id="yourCardStacks">Your Card Stacks:</h2> 
     {cardStacks.map((stacks, i) => {
         return(
                       
@@ -34,7 +31,7 @@ return(
             transition: {duration: .3},
             }}
             whileTap={{ scale: 0.9 }}>
-            <Link to={"/study/" + stacks._id}>
+            <Link to={"/study/" + stacks._id} className="link">
             <div className="card mx-auto">
                 <h1 className="card-title">{stacks.title}</h1>   
             </div>    
@@ -43,10 +40,20 @@ return(
         )
     })}
     </div>
-    :
+    }
+    {isLoggedIn && cardStacks.length === 0 &&
     <div>
-        <h1>Sign Up or Login to continue!</h1>
-    </div>}
+        <h2 className="instructions">Create a New Stack to get started!</h2>
     </div>
+    }
+    {!isLoggedIn &&
+    <div>
+        <h2 className="instructions">Please Sign Up or Login</h2>
+    </div>
+    }
+    </div>
+    
+   
+    
     </>
 )}

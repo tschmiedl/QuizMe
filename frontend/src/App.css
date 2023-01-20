@@ -21,6 +21,10 @@ body {
     
 
 }
+#yourCardStacks{
+    text-align: center;
+    margin-top: 20px;
+}
 
 .card-link {
     border: 2px;
@@ -37,6 +41,11 @@ body {
 
 }
 
+.link {
+    text-decoration: none;
+    color: black;
+}
+
 .moveButton {
     border-radius: 2em;
     height: 50px;
@@ -50,4 +59,30 @@ body {
 .addCardLink {
     display: flex;
     justify-content: center;
+}
+
+.form-group{
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+.LorS{
+    margin-top: 10px;
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    
+}
+
+.instructions{
+    text-align: center;
+    margin-top: 10px;
 }
