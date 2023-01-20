@@ -6,13 +6,13 @@ import axios from 'axios'
 
 // Sign up Route
 export async function signUp(formData) {
-    const {data} = await axios.post('http://localhost:8000/users/signup', formData)
+    const {data} = await axios.post('users/signup', formData)
     return data
 }
 
 // Login Route
 export async function login(formData) {
-    const { data } = await axios.post('http://localhost:8000/users/login', formData)
+    const { data } = await axios.post('users/login', formData)
     return data
 }
 
@@ -27,7 +27,7 @@ export async function getUserCardStacks() {
         }
     }
     
-    const { data } = await axios.get('http://localhost:8000/stack/', config)
+    const { data } = await axios.get('stack/', config)
     return data
 }
 
@@ -40,7 +40,7 @@ export async function getCardsinStack(stackid) {
         }
     }
     console.log(config)
-    const { data } = await axios.get('http://localhost:8000/stack/' + stackid, config)
+    const { data } = await axios.get('stack/' + stackid, config)
     return data
 }
 
@@ -52,7 +52,7 @@ export async function createCardStack(formData) {
             
         }
     }
-    const { data } = await axios.post('http://localhost:8000/stack/', formData, config)
+    const { data } = await axios.post('stack/', formData, config)
     return data
 }
 
@@ -64,7 +64,7 @@ export async function addOneCard(stackId, formData) {
             
         }
     }
-    const { data } = await axios.put('http://localhost:8000/stack/' + stackId, formData, config)
+    const { data } = await axios.put('stack/' + stackId, formData, config)
     return data
 }
 
@@ -76,7 +76,7 @@ export async function deleteOneCard(stackId, cardId) {
             
         }
     }
-    const { data } = await axios.delete('http://localhost:8000/stack/' + stackId + '/' + cardId, config)
+    const { data } = await axios.delete('stack/' + stackId + '/' + cardId, config)
     return data
 }
 
@@ -88,6 +88,6 @@ export async function updateOneCard(stackId, cardId, formData) {
             
         }
     }
-    const { data } = await axios.put('http://localhost:8000/stack/' + stackId + '/' + cardId, formData, config)
+    const { data } = await axios.put('stack/' + stackId + '/' + cardId, formData, config)
     return data
 }

@@ -9,7 +9,7 @@ const cors = require("cors")
 require("dotenv").config()
 const bodyParser = require('body-parser')
 
-
+const path = require("path")
 
 // access models
 const db = require("./models")
@@ -31,10 +31,16 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
+app.use(express.static(path.join(path.dirname(__dirname), "frontend", "build")))
+
 // Use controllers for all other routes
 app.use("/stack", cardCtrl)
 app.use("/stack", cardStackCtrl)
 app.use('/users', userCtrl)
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(path.dirname(__dirname), "frontend", "build", "index.html"));
+});
 
 // +-+-+-+-+-+-+-+-+
 // |L|I|S|T|E|N|E|R|
