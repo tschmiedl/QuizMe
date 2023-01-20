@@ -27,7 +27,10 @@ export default function ShowCard(props) {
                 setCardsExist(false)
             }
         })
+        
     }, [])
+
+    console.log(cardsInStack)
 
     
     

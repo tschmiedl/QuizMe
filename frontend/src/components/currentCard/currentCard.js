@@ -33,6 +33,8 @@ export default function CurrentCard(props) {
     const cancelEdit = () => {
         setFromShow(false)
     }
+
+    
     
     
     return(
@@ -68,8 +70,8 @@ export default function CurrentCard(props) {
                         onChange={handleChange}
                         value={formData.answer} />
                 </div>
-                <button type="button" onClick={() => {editCard(props.stackid, card._id, formData)}}>Submit</button>
-                <button type="button" onClick={() => {cancelEdit()}}>Cancel</button>
+                <button type="button"  onClick={() => {editCard(props.stackid, card._id, formData)}}>Submit</button>
+                <button type="button"  onClick={() => {cancelEdit()}}>Cancel</button>
             </form> 
             </div>
         : 
@@ -94,12 +96,24 @@ export default function CurrentCard(props) {
                     <div 
                     className="card-title">{card.title}</div>
                     {props.hintShow ? 
-                    <div className="card-text">{card.hint}</div>
+                    <motion.div 
+                    className="card-text"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{delay:.1}}
+                    >{card.hint}</motion.div>
                     :
                     
                         <button className="stateShow" onClick={() => {props.setHintShow(true)}}>Hint</button>}
                     {props.answerShow ? 
-                    <div className="card-text">{card.answer}</div>
+                    <motion.div 
+                    className="card-text"
+                    initial={{opacity: 0}}
+                    animate={{opacity: 1}}
+                    exit={{opacity: 0}}
+                    transition={{delay:.1}}
+                    >{card.answer}</motion.div>
                     :
                     
                     <button className="stateShow" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}

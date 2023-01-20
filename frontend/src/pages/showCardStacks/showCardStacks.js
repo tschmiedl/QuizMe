@@ -19,7 +19,7 @@ return(
     <div>
     {isLoggedIn && cardStacks.length > 0 && 
     <div className="row">
-        <h2>Welcome</h2>
+        <h2 id="yourCardStacks">Welcome</h2>
     <h2 id="yourCardStacks">Your Card Stacks:</h2> 
     {cardStacks.map((stacks, i) => {
         return(
