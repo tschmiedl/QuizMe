@@ -64,7 +64,7 @@ export async function addOneCard(stackId, formData) {
             
         }
     }
-    const { data } = await axios.put('stack/' + stackId, formData, config)
+    const { data } = await axios.put('/stack/' + stackId, formData, config)
     return data
 }
 

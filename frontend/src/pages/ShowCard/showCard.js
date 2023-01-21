@@ -125,7 +125,7 @@ export default function ShowCard(props) {
     </div>
     : 
     <div>
-        <Link to={"/" + stackid} className="addCardLink">Add a card to get started!</Link>
+        <Link to={"/new/" + stackid} className="addCardLink">Add a card to get started!</Link>
     </div>
     }
     </>

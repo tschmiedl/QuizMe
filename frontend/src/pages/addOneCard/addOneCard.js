@@ -16,15 +16,19 @@ export default function AddOneCard() {
     }
 
     function handleSubmit(event) {
-        
-        addOneCard(stackid, formData)
+        event.preventDefault()
+        addOneCard(stackid, formData).then(setFormData({
+            title: '',
+            hint: '',
+            answer: ''
+        }))
         
     }
 
     
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form>
             <div className="form-group">
                 <label htmlFor="title">Question / Word</label>
                 <input
@@ -42,12 +46,12 @@ export default function AddOneCard() {
                     value={formData.hint} />
                 <label htmlFor="answer">Answer</label>
                 <input
-                    type='answer'
+                    type='text'
                     className="form-control"
                     name='answer'
                     onChange={handleChange}
                     value={formData.answer} />
-                <button type="submit">Create!</button>
+                <button onClick={handleSubmit}>Create!</button>
             </div>
         </form>
     )

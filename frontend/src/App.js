@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
-import {Routes, Route, Navigate} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom'
+
 // API Functions
 import { getUserCardStacks } from './utils/api';
 
@@ -61,8 +61,6 @@ function App() {
         <Route path='/new' element={<AddCardStack />} />
         <Route path='/new/:stackid' element={<AddOneCard />} />
         <Route path='/:anything' element={<ErrorPage />} />
-        
-        {/* <Route path='/:anything/:more' element={<ErrorPage />} /> */}
       </Routes>
      
     </div>
