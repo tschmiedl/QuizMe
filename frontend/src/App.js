@@ -59,7 +59,7 @@ function App() {
         <Route path='/account' element={<AccountPage setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/study/:stackid" element={<ShowCard />}/>
         <Route path='/new' element={<AddCardStack />} />
-        <Route path='/:stackid' element={<AddOneCard />} />
+        <Route path='/new/:stackid' element={<AddOneCard />} />
         <Route path='/:anything' element={<ErrorPage />} />
         
         {/* <Route path='/:anything/:more' element={<ErrorPage />} /> */}

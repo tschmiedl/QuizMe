@@ -82,7 +82,7 @@ export default function ShowCard(props) {
     <>
     {cardsExist ? 
     <div>
-         <Link to={"/" + stackid} className="addCardLink">Add a Card</Link>
+         <Link to={"/new/" + stackid} className="addCardLink">Add a Card</Link>
          
     <motion.div 
     className="showCard"
