@@ -39,8 +39,9 @@ export async function getCardsinStack(stackid) {
             
         }
     }
-    console.log(config)
-    const { data } = await axios.get('stack/' + stackid, config)
+    
+    const { data } = await axios.get('/stack/' + stackid, config)
+    console.log(data)
     return data
 }
 
@@ -52,7 +53,7 @@ export async function createCardStack(formData) {
             
         }
     }
-    const { data } = await axios.post('stack/', formData, config)
+    const { data } = await axios.post('/stack/', formData, config)
     return data
 }
 
@@ -64,7 +65,7 @@ export async function addOneCard(stackId, formData) {
             
         }
     }
-    const { data } = await axios.put('stack/' + stackId, formData, config)
+    const { data } = await axios.put('/stack/' + stackId, formData, config)
     return data
 }
 
@@ -76,7 +77,7 @@ export async function deleteOneCard(stackId, cardId) {
             
         }
     }
-    const { data } = await axios.delete('stack/' + stackId + '/' + cardId, config)
+    const { data } = await axios.delete('/stack/' + stackId + '/' + cardId, config)
     return data
 }
 
@@ -88,6 +89,6 @@ export async function updateOneCard(stackId, cardId, formData) {
             
         }
     }
-    const { data } = await axios.put('stack/' + stackId + '/' + cardId, formData, config)
+    const { data } = await axios.put('/stack/' + stackId + '/' + cardId, formData, config)
     return data
 }
