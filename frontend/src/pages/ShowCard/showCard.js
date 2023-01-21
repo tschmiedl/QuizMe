@@ -48,12 +48,12 @@ export default function ShowCard(props) {
 
     const prevCard = () => {
         if (currentCard > 0) {
-            setCurrentCard(currentCard -1)
-            setHintShow(false)
+            setCurrentCard(currentCard -1).then(setHintShow(false))
+            
         }
         else {
-            setCurrentCard(cardsInStack.length -1)
-            setHintShow(false)
+            setCurrentCard(cardsInStack.length -1).then(setHintShow(false))
+            
         }
     }
     
@@ -81,8 +81,16 @@ export default function ShowCard(props) {
     <>
     {cardsExist ? 
     <div>
+        <motion.div
+        initial={{ scale: 0 }}
+        animate={{ rotate: 360, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20}}
+        >
          <Link to={"/new/" + stackid} className="addCardLink">Add a Card</Link>
-         
+         </motion.div>
     <motion.div 
     className="showCard"
     initial={{ opacity: 0, scale: 0.5 }}
