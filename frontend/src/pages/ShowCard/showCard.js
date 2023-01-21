@@ -30,7 +30,6 @@ export default function ShowCard(props) {
         
     }, [])
 
-    console.log(cardsInStack)
 
     
     
@@ -100,7 +99,7 @@ export default function ShowCard(props) {
     onHoverStart={e => {}}
     onHoverEnd={e => {}}
     whileTap={{ scale: 0.9}}
-    onClick={prevCard}>Prev</motion.button>
+    onClick={prevCard}>Next</motion.button>
 
     <CurrentCard 
         currentCard={currentCard} 

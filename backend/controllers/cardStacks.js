@@ -8,7 +8,6 @@ function isAuthenticated(req, res, next){
     if(req.headers.authorization){
         next()
     } else {
-        console.log("noHeaders")
         res.sendStatus(401)
     }
 }

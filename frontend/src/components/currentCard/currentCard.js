@@ -6,7 +6,7 @@ export default function CurrentCard(props) {
     const [card, setCard] = useState({})
     const [swipe, setSwipe] = useState()
 
-    const [formShow, setFromShow] = useState(false)
+    const [formShow, setFormShow] = useState(false)
     const [formData, setFormData] = useState({
         title: '',
         hint: '',
@@ -16,7 +16,7 @@ export default function CurrentCard(props) {
     useEffect(() => {
         setCard(props.cardsInStack[props.currentCard])
         setFormData(props.cardsInStack[props.currentCard])
-        setFromShow(false)
+        setFormShow(false)
     },[props])
 
     const handleChange = (event) => {
@@ -27,11 +27,11 @@ export default function CurrentCard(props) {
         updateOneCard(stackId, cardId, formData).then((data) => {
             props.setCardsInStack(data.cards)
         })
-        setFromShow(false)
+        setFormShow(false)
     }
     
     const cancelEdit = () => {
-        setFromShow(false)
+        setFormShow(false)
     }
 
     
@@ -118,7 +118,7 @@ export default function CurrentCard(props) {
                     
                     <button className="stateShow" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}
                     <div>
-                        <button className="card-link" onClick={() => {setFromShow(true)}}>Edit</button>
+                        <button className="card-link" onClick={() => {setFormShow(true)}}>Edit</button>
                         <button className="card-link" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</button>
                     </div>
             </motion.div>}

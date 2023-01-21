@@ -41,7 +41,6 @@ export async function getCardsinStack(stackid) {
     }
     
     const { data } = await axios.get('/stack/' + stackid, config)
-    console.log(data)
     return data
 }
 
@@ -65,7 +64,7 @@ export async function addOneCard(stackId, formData) {
             
         }
     }
-    const { data } = await axios.put('/stack/' + stackId, formData, config)
+    const { data } = await axios.put('stack/' + stackId, formData, config)
     return data
 }
 
