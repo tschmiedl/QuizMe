@@ -10,7 +10,7 @@ export default function ShowCardStacks({cardStacks, isLoggedIn}) {
     
     
 
-console.log(cardStacks)
+
     
 
     
