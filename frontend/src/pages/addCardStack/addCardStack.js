@@ -16,7 +16,7 @@ export default function AddCardStack(props) {
     }
 
     function handleSubmit(event) {
-        event.preventDefault()
+        
         createCardStack(formData)
         setFormData({
             title: '',
