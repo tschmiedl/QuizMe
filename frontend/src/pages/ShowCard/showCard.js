@@ -76,6 +76,8 @@ export default function ShowCard(props) {
     
     
     
+    
+    
    
    return(
     <>
@@ -90,6 +92,7 @@ export default function ShowCard(props) {
           damping: 20}}
         >
          <Link to={"/new/" + stackid} className="addCardLink">Add a Card</Link>
+         
          </motion.div>
     <motion.div 
     className="showCard"

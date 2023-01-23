@@ -56,6 +56,18 @@ export async function createCardStack(formData) {
     return data
 }
 
+// Delete CardStack
+export async function deleteCardStack(stackid) {
+    const config = {
+        headers: {
+            'Authorization': localStorage.getItem('token')
+            
+        }
+    }
+    const {data} = await axios.delete('/stack/' + stackid, config)
+    return data
+}
+
 // Add a card
 export async function addOneCard(stackId, formData) {
     const config = {
