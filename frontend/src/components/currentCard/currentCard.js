@@ -4,7 +4,10 @@ import { motion } from "framer-motion"
 
 export default function CurrentCard(props) {
     const [card, setCard] = useState({})
-    const [swipe, setSwipe] = useState()
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset, velocity) => {
+        return Math.abs(offset) * velocity;
+    };
 
     const [formShow, setFormShow] = useState(false)
     const [formData, setFormData] = useState({
@@ -83,12 +86,13 @@ export default function CurrentCard(props) {
             drag="x"
             dragConstraints={{left: 0, right:0}}
             dragSnapToOrigin={true}
-            onDragEnd={(event, info) => {
-                setSwipe(info.point.x)
-                if (swipe < info.point.x) {
+            onDragEnd={(event, {offset, velocity}) => {
+                const swipe = swipePower(offset.x, velocity.x)
+                
+                if (swipe < -swipeConfidenceThreshold) {
                     props.nextCard()
                 }
-                else {
+                else if (swipe > swipeConfidenceThreshold) {
                     props.prevCard()
                 }    
             }}
