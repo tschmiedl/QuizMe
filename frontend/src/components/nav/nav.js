@@ -21,10 +21,13 @@ export default function Nav(props) {
     </nav>
     : 
     
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav 
+    className="navbar navbar-expand-lg bg-body-tertiary"
+    >
     <div className="container-fluid">
         <Link to='/signup'>Sign Up</Link>
         <Link to='/login'>Login</Link>
+        <Link to='/demo'>Run a Demo</Link>
     </div>
     </nav>
     }   

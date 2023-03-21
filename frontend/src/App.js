@@ -19,6 +19,7 @@ import ErrorPage from './pages/errorPage/errorPage';
 import AccountPage from './pages/account/account';
 import AddCardStack from './pages/addCardStack/addCardStack';
 import AddOneCard from './pages/addOneCard/addOneCard';
+import Demo from './pages/demo/demo';
 
 
 
@@ -60,6 +61,7 @@ function App() {
         <Route path="/study/:stackid" element={<ShowCard />}/>
         <Route path='/new' element={<AddCardStack />} />
         <Route path='/new/:stackid' element={<AddOneCard />} />
+        <Route path='/demo' element={<Demo />} />
         <Route path='/:anything' element={<ErrorPage />} />
       </Routes>
      
