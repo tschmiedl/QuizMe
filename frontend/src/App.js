@@ -61,7 +61,7 @@ function App() {
         <Route path="/study/:stackid" element={<ShowCard />}/>
         <Route path='/new' element={<AddCardStack />} />
         <Route path='/new/:stackid' element={<AddOneCard />} />
-        <Route path='/demo' element={<Demo />} />
+        <Route path='/demo' element={<Demo isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} cardStacks={cardStacks}/>} />
         <Route path='/:anything' element={<ErrorPage />} />
       </Routes>
      

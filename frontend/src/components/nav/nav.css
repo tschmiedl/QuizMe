@@ -1,4 +1,12 @@
 .navbar {
     display: flex;
     justify-content: space-evenly;
+    background-color: white;
+}
+.navbtn {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    border-radius: .5em;
+    padding: .5em
 }

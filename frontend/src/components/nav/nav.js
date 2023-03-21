@@ -22,12 +22,12 @@ export default function Nav(props) {
     : 
     
     <nav 
-    className="navbar navbar-expand-lg bg-body-tertiary"
+    className="navbar"
     >
     <div className="container-fluid">
-        <Link to='/signup'>Sign Up</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/demo'>Run a Demo</Link>
+        <Link to='/signup' className="navbtn">Sign Up</Link>
+        <Link to='/login' className="navbtn">Login</Link>
+        <Link to='/demo' className="navbtn">Run a Demo</Link>
     </div>
     </nav>
     }   

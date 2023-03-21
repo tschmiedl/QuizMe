@@ -42,7 +42,7 @@ export default function AddCardStack(props) {
                     name='category'
                     onChange={handleChange}
                     value={formData.category} />
-               <button onClick={(e) => handleSubmit(e,formData)}>Create!</button>
+               <button onClick={(e) => handleSubmit(e,formData)} className="createbtn">Create!</button>
             </div>
         </form>
         </>

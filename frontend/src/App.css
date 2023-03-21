@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background-color: blanchedalmond;
+    background-color: #16161d
 }
 
 .card{
@@ -48,7 +48,7 @@ body {
 
 .link {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .moveButton {
@@ -66,7 +66,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 80px;
-    color:black
+    color:rgb(255, 255, 255)
 }
 
 .form-group{
@@ -98,4 +98,14 @@ form{
 .reveal {
     border: none;
     background-color: transparent;
+}
+
+.createbtn {
+    background-color: white;
+    border-radius: 1em;
+    border: none;
+    margin-top: 20px;
+    width: 200px;
+    text-align: center;
+    align-self: center;
 }
