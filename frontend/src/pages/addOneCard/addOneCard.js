@@ -30,28 +30,28 @@ export default function AddOneCard() {
     return(
         <form>
             <div className="form-group">
-                <label htmlFor="title">Question / Word</label>
+                <label htmlFor="title" className="labels">Question / Word</label>
                 <input
                     type='text'
                     className="form-control"
                     name='title'
                     onChange={handleChange}
                     value={formData.title} />
-                <label htmlFor="hint">Hint</label>
+                <label htmlFor="hint" className="labels">Hint</label>
                 <input
                     type='text'
                     className="form-control"
                     name='hint'
                     onChange={handleChange}
                     value={formData.hint} />
-                <label htmlFor="answer">Answer</label>
+                <label htmlFor="answer" className="labels">Answer</label>
                 <input
                     type='text'
                     className="form-control"
                     name='answer'
                     onChange={handleChange}
                     value={formData.answer} />
-                <button onClick={handleSubmit}>Create!</button>
+                <button onClick={handleSubmit} className="createbtn">Create!</button>
             </div>
         </form>
     )

@@ -37,7 +37,9 @@ export default function CurrentCard(props) {
         setFormShow(false)
     }
 
-    
+    const editFunction = () => {
+        setFormShow(true)
+    }
     
     
     return(
@@ -73,8 +75,10 @@ export default function CurrentCard(props) {
                         onChange={handleChange}
                         value={formData.answer} />
                 </div>
-                <button type="button"  onClick={() => {editCard(props.stackid, card._id, formData)}}>Submit</button>
-                <button type="button"  onClick={() => {cancelEdit()}}>Cancel</button>
+                <div className="submitCancel">
+                <p onClick={() => {editCard(props.stackid, card._id, formData)}} className="editOptBtn">Submit</p>
+                <p onClick={() => {cancelEdit()}} className="editOptBtn">Cancel</p>
+                </div>
             </form> 
             </div>
         : 
@@ -121,9 +125,9 @@ export default function CurrentCard(props) {
                     :
                     
                     <button className="stateShow" onClick={() => {props.setAnswerShow(true)}}>Answer</button>}
-                    <div>
-                        <button className="card-link" onClick={() => {setFormShow(true)}}>Edit</button>
-                        <button className="card-link" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</button>
+                    <div className="submitCancel">
+                        <p className="editOptBtn" onClick={() => {setFormShow(true)}}>Edit</p>
+                        <p className="editOptBtn" onClick={() => {props.deleteCard(props.stackid, card._id)}}>Delete</p>
                     </div>
             </motion.div>}
         </motion.div>

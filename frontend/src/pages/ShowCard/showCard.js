@@ -3,7 +3,9 @@ import { Link, useParams } from "react-router-dom"
 import CurrentCard from "../../components/currentCard/currentCard"
 import { getCardsinStack } from "../../utils/api"
 import { deleteOneCard } from "../../utils/api"
-
+import nexticon from "./assets/next-28.svg"
+import previcon from "./assets/prev.svg"
+import addcard from "./assets/add_24px.svg"
 import { motion } from "framer-motion"
 
 export default function ShowCard(props) {
@@ -12,6 +14,8 @@ export default function ShowCard(props) {
     const [cardsExist, setCardsExist] = useState(false)
     const [hintShow, setHintShow] = useState(false)
     const [answerShow, setAnswerShow] = useState(false)
+
+    
 
     const { stackid } = useParams()
     
@@ -48,11 +52,12 @@ export default function ShowCard(props) {
 
     const prevCard = () => {
         if (currentCard > 0) {
-            setCurrentCard(currentCard -1).then(setHintShow(false))
-            
+            setCurrentCard(currentCard -1)
+            setHintShow(false) 
         }
         else {
-            setCurrentCard(cardsInStack.length -1).then(setHintShow(false))
+            setCurrentCard(cardsInStack.length -1)
+            setHintShow(false)
             
         }
     }
@@ -82,7 +87,8 @@ export default function ShowCard(props) {
    return(
     <>
     {cardsExist ? 
-    <div>
+    <div className="cardPage">
+        
         <motion.div
         initial={{ scale: 0 }}
         animate={{ rotate: 360, scale: 1 }}
@@ -91,9 +97,11 @@ export default function ShowCard(props) {
           stiffness: 260,
           damping: 20}}
         >
-         <Link to={"/new/" + stackid} className="addCardLink">Add a Card</Link>
+         <Link to={"/new/" + stackid} className="addCardLink">
+            <img src={addcard} alt="Add A Card" id="addCardIcon"/>
+         </Link>
          
-         </motion.div>
+         </motion.div> 
     <motion.div 
     className="showCard"
     initial={{ opacity: 0, scale: 0.5 }}
@@ -104,13 +112,16 @@ export default function ShowCard(props) {
         ease: [0, 0.71, 0.2, 1.01]
       }}
     >
-    <motion.button 
+    
+    <motion.img 
     className="moveButton"
+    src={previcon}
     whileHover={{ scale: 1.1 }}
     onHoverStart={e => {}}
     onHoverEnd={e => {}}
     whileTap={{ scale: 0.9}}
-    onClick={prevCard}>Next</motion.button>
+    onClick={prevCard}>
+    </motion.img> 
 
     <CurrentCard 
         currentCard={currentCard} 
@@ -123,15 +134,19 @@ export default function ShowCard(props) {
         stackid={stackid}
         deleteCard={deleteCard}
         nextCard={nextCard}
-        prevCard={prevCard}
+        prevCard={prevCard}  
         />
-    <motion.button 
+ 
+    <motion.img
+    src={nexticon}
     className="moveButton"
     whileHover={{ scale: 1.1 }}
     onHoverStart={e => {}}
     onHoverEnd={e => {}}
     whileTap={{ scale: 0.9}}
-    onClick={nextCard}>Next</motion.button>
+    onClick={nextCard}>
+    </motion.img>
+
     </motion.div>
     </div>
     : 

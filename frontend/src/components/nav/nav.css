@@ -5,8 +5,8 @@
 }
 .navbtn {
     text-decoration: none;
-    background-color: black;
-    color: white;
+    
+    color: rgb(0, 0, 0);
     border-radius: .5em;
     padding: .5em
 }
