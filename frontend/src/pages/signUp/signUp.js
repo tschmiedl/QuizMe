@@ -33,12 +33,12 @@ export default function SignUp(props) {
 
     return(
         <div className="container">
-            <h2>Sign Up</h2>
+            <h2 className="actionh2">Sign Up</h2>
             
             <form>
                 <div className="form-group">
 
-                    <label htmlFor='username'>Username</label>
+                    <label htmlFor='username' className="actionlabels">Username</label>
                     <input
                         type='text'
                         name='username'
@@ -47,7 +47,7 @@ export default function SignUp(props) {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password' className="actionlabels">Password</label>
                     <input
                         type='password'
                         name='password'

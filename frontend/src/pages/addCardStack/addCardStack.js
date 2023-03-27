@@ -28,21 +28,21 @@ export default function AddCardStack(props) {
         <>
         <form>
             <div className="form-group">
-                <label htmlFor='title'>Stack Name</label>
+                <label htmlFor='title' className="labels">Stack Name</label>
                 <input
                     className="form-control"
                     type='text'
                     name='title'
                     onChange={handleChange}
                     value={formData.title} />
-                <label htmlFor='title'>Category</label>
+                <label htmlFor='title' className="labels">Category</label>
                 <input
                     className="form-control"
                     type='text'
                     name='category'
                     onChange={handleChange}
                     value={formData.category} />
-               <button onClick={(e) => handleSubmit(e,formData)}>Create!</button>
+               <button onClick={(e) => handleSubmit(e,formData)} className="createbtn">Create!</button>
             </div>
         </form>
         </>

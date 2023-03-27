@@ -32,11 +32,11 @@ export default function Login(props) {
 
     return(
         <div className="container">
-            <h2>Log In</h2>
+            <h2 className="actionh2">Log In</h2>
 
             <form>
                 <div className="form-group">
-                    <label htmlFor='username'>Username</label>
+                    <label htmlFor='username' className="actionlabels">Username</label>
                     <input
                         type='text'
                         name='username'
@@ -45,7 +45,7 @@ export default function Login(props) {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password' className="actionlabels">Password</label>
                     <input
                         type='password'
                         name='password'

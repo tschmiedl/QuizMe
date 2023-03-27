@@ -2,7 +2,8 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background-color: blanchedalmond;
+    background-color: #16161d;
+    
 }
 
 .card{
@@ -11,13 +12,14 @@ body {
     margin-bottom: 20px;
     text-align: center;
     width:50vw;
+    
 }
 
 .showCard{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-top: 100px;
+    margin-top: 150px;
     height: 100px;
     
 
@@ -25,6 +27,7 @@ body {
 #yourCardStacks{
     text-align: center;
     margin-top: 20px;
+    color: white;
 }
 
 .card-link {
@@ -48,7 +51,7 @@ body {
 
 .link {
     text-decoration: none;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .moveButton {
@@ -57,16 +60,28 @@ body {
     padding:10px, 10px, 10px, 10px;
     margin-left: 5px;
     margin-right: 5px;
-    background-color: rgb(220, 224, 255);
-
+    background-color: transparent;
     text-align: center;
+    filter: invert(1);
+}
+
+.editOptBtn {
+    margin-top: 1em;
+    font-size: small;
+    cursor: pointer;
+}
+
+#addCardIcon {
+    width: 55px;
+    filter: invert(1);
 }
 
 .addCardLink {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
-    color:black
+    margin-top: 50px;
+    margin-bottom: 20px;
+    
 }
 
 .form-group{
@@ -87,15 +102,57 @@ form{
     border: none;
     background-color: transparent;
     text-decoration: underline;
+    color: white;
     
 }
 
 .instructions{
     text-align: center;
-    margin-top: 10px;
+    margin-top: 50px;
+    color: white;
 }
 
 .reveal {
     border: none;
     background-color: transparent;
+}
+
+.createbtn {
+    background-color: white;
+    border-radius: 1em;
+    border: none;
+    margin-top: 20px;
+    width: 200px;
+    text-align: center;
+    align-self: center;
+}
+
+.actionh2 {
+    color: white;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.actionlabels {
+    color: white;
+}
+
+.card-title {
+    color:#16161d
+}
+
+.labels {
+    color:white
+}
+
+.cardPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitCancel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1em;
 }
