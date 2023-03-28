@@ -9,8 +9,8 @@ export default function Nav(props) {
     
 
     const [formData, setFormData] = useState({
-        username: 'tannerschmiedl',
-        password: 'tanner'
+        username: 'tanner',
+        password: 'test'
     })
 
 
